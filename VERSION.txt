@@ -1,0 +1,5 @@
+الأمير نت HotSpot
+Version: 2.0 RouterOS v6
+Updated: 2026-09-22
+Design: Arabic modern dark / blue / white / red
+Controller: PHP RouterOS API bridge

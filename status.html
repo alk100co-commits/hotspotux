@@ -1,0 +1,29 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="$(refresh-timeout)"><title>حالة الاتصال | الأمير نت</title><link rel="stylesheet" href="css/style.css"></head><body data-client-ip="$(ip)"><main class="wrap">
+<section class="panel status-header"><div class="welcome">مرحباً بك!</div><h1 class="net-title">في الأمير نت</h1><div class="tagline">اتصال سريع · خدمة مميزة · ثقة متجددة</div></section>
+<section class="panel status-shell">
+ <div class="success-box">إذا لم يتم الاتصال تلقائياً اضغط هنا: <a href="$(link-status)">تحديث الحالة</a></div>
+ <div class="timer-row"><span>اسم المستخدم :</span><strong class="username">$(username)</strong></div>
+ <div class="stat-card"><div class="stat-head"><div><small>التحميل المتبقي :</small><h2>$(remain-bytes-total-nice)</h2></div><div class="progress">94%</div></div>
+  <div class="chart-wrap"><svg viewBox="0 0 360 90" width="100%" height="86" aria-label="رسم بياني للاستهلاك"><polyline points="0,75 35,68 70,72 105,45 140,56 175,32 210,42 245,18 280,30 315,12 360,22" fill="none" stroke="#9b3ed9" stroke-width="4"/><polyline points="0,78 45,72 90,76 135,62 180,68 225,50 270,58 315,46 360,50" fill="none" stroke="#21a665" stroke-width="3"/><line x1="0" y1="82" x2="360" y2="82" stroke="#cbd1d8" stroke-width="1"/></svg><div class="chart-label">مخطط استهلاك الجلسة</div></div>
+  <div class="usage"><div><small>الرفع</small><strong class="up">$(bytes-out-nice)</strong></div><div><small>الاستهلاك</small><strong>$(bytes-total-nice)</strong></div><div><small>التحميل</small><strong class="down">$(bytes-in-nice)</strong></div></div>
+ </div>
+ <div class="timer-row"><span>الوقت المتبقي :<br><b>$(session-time-left)</b></span><div class="circle">◯</div></div>
+ <div class="timer-row"><span>متصل منذ :<br><b>$(uptime)</b></span><div class="circle green">●</div></div>
+ <div class="panel status-speed" style="margin-top:12px;background:#263646"><div class="section-head"><div><div class="section-title">سرعة الكرت الحالية :</div><div class="section-sub">يمكنك اختيار سرعة أخرى</div></div><div class="ico"><svg class="svgico" viewBox="0 0 24 24"><path d="M13.5 2L6 13h5l-.8 9L18 10h-5z"/></svg></div></div><div class="open" id="speedName">$(profile)</div>
+  <div class="speed-grid">
+   <button class="speed-btn" data-profile="AMIR-P-DEFAULT" onclick="changeStatusSpeed('AMIR-P-DEFAULT','سرعة عادية')">سرعة عادية</button>
+   <button class="speed-btn" data-profile="AMIR-P-HOTSPOT" onclick="changeStatusSpeed('AMIR-P-HOTSPOT','كرت هوتسبوت')">كرت هوتسبوت</button>
+   <button class="speed-btn" data-profile="AMIR-P-MEDIUM" onclick="changeStatusSpeed('AMIR-P-MEDIUM','سرعة متوسطة')">سرعة متوسطة</button>
+   <button class="speed-btn" data-profile="AMIR-P-HIGH" onclick="changeStatusSpeed('AMIR-P-HIGH','سرعة عالية')">سرعة عالية</button>
+   <button class="speed-btn full" data-profile="AMIR-P-VERYHIGH" onclick="changeStatusSpeed('AMIR-P-VERYHIGH','سرعة عالية جداً')">سرعة عالية جداً</button>
+  </div><div class="selected" id="speedNotice"></div>
+ </div>
+ <div class="panel google-status"><div class="section-head"><div><div class="section-title">تحديثات جوجل : <b id="googleState">مفعلة</b></div><div class="section-sub">يمكن التحكم بها لهذا الاتصال</div></div><div id="googleToggle" class="toggle" onclick="AmirNet.toggleGoogle(this)"><i></i></div></div></div>
+ <div class="status-actions"><a class="danger-btn" href="$(link-logout)">تسجيل الخروج</a><a class="danger-btn" href="$(link-logout)">قطع الاتصال</a></div>
+</section>
+<a class="panel support-btn" href="https://wa.me/967778215553">▢ التواصل مع الدعم</a>
+<footer class="footer"><div class="footer-code">‹› ♡ ‹›</div><div class="number" data-phone>778215553</div><div style="font-size:10px">برمجة وتصميم الصفحة</div><div class="developer" data-developer>المبرمج والمهندس عبدالحميد داوؤد</div><div class="footer-links"><a href="tel:778215553">☎ اتصال</a><a href="https://wa.me/967778215553">◫ واتساب</a></div></footer>
+</main><script src="js/app.js"></script><script>
+(function(){var p={'AMIR-P-HOTSPOT':'كرت هوتسبوت','AMIR-P-ECO':'سرعة اقتصادية','AMIR-P-DEFAULT':'سرعة عادية','AMIR-P-MEDIUM':'سرعة متوسطة','AMIR-P-HIGH':'سرعة عالية','AMIR-P-VERYHIGH':'سرعة عالية جداً'};var e=document.getElementById('speedName'),v=(e.textContent||'').trim();if(p[v])e.textContent=p[v];document.querySelectorAll('[data-profile]').forEach(function(b){if(b.dataset.profile==='$(profile)')b.classList.add('active')})})();
+async function changeStatusSpeed(profile,label){var u='$(username)';var r=await AmirNet.api('set_speed',{username:u,profile:profile,ip:document.body.dataset.clientIp||''});if(!r.ok){AmirNet.toast(r.error||'تعذر تغيير السرعة','error');return}document.getElementById('speedName').textContent=label;document.querySelectorAll('.status-speed .speed-btn').forEach(function(x){x.classList.toggle('active',x.dataset.profile===profile)});var n=document.getElementById('speedNotice');n.textContent='✓ تم تغيير السرعة إلى '+label+' بنجاح';n.classList.add('show');AmirNet.toast('تم تغيير السرعة إلى '+label+' بنجاح','success');setTimeout(function(){location.reload()},1200)}
+</script></body></html>

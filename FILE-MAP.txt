@@ -1,0 +1,37 @@
+AMIR NET HOTSPOT - FILE MAP
+
+login.html                  صفحة الدخول الرئيسية
+status.html                 صفحة حالة المستخدم
+admin.html                  لوحة التحكم
+sales.html                  أسعار الكروت + نقاط البيع
+qrcode.html                 QR CODE
+logout.html                 تسجيل الخروج
+error.html                  الأخطاء
+redirect.html               إعادة التوجيه
+alogin.html                 الدخول التلقائي
+rlogin.html                 إعادة الدخول
+
+css/style.css               التصميم والتأثيرات والخطوط المحلية
+js/app.js                   وظائف الدخول/السرعات/الإشعارات/السجل/Google Play
+js/admin.js                 وظائف لوحة التحكم
+fonts/                      Noto Sans Arabic + Noto Kufi Arabic
+images/logo-amir.svg        شعار الأمير نت الجديد
+images/logo.png             الشعار القديم محفوظ دون حذف
+images/qrcode.png           QR الحالي
+
+scripts/speed-profiles.rsc          إنشاء ملفات السرعات
+scripts/name-only-login.rsc         ضبط HotSpot على اسم مستخدم فقط
+scripts/controller-user.rsc         إنشاء مستخدم API للوحدة
+scripts/controller-walled-garden.rsc السماح للوحدة قبل تسجيل الدخول
+scripts/google-updates-off.rsc      حظر DNS عام اختياري
+scripts/google-updates-on.rsc       إزالة الحظر العام
+scripts/google-updates.rsc          ملاحظات Google Play
+scripts/apply-speed-to-user.rsc     تغيير سرعة مستخدم يدوياً
+
+controller/config.example.php       قالب إعدادات الوحدة
+controller/config.php                إعدادات الوحدة الجاهزة للتعديل
+controller/RouterOSApi.php           عميل RouterOS API بسيط لـ PHP
+controller/api.php                   API للسرعات وGoogle Play والإعدادات
+controller/README.md                 شرح تشغيل الوحدة
+
+docs/SETUP-AR.md                    خطوات التركيب العربية
